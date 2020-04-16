@@ -1,0 +1,26 @@
+name: 'CI'
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - 'releases/*'
+
+jobs:
+  ci:
+    name: C/I
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - name: Build / Test
+        run: npm run all
+      - name: Action dry run
+        id: dry_run
+        uses: ./
+        with:
+          baseUrl: 'https://hashicorp.com'
+          files: 'pages/test.mdx'
+      - name: Log annotations
+        run: echo ${{ toJson(steps.dry_run.outputs.annotations) }}
