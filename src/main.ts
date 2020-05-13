@@ -39,9 +39,10 @@ async function run({ GITHUB_WORKSPACE }: ActionEnvironment): Promise<void> {
 
     const annotations = createAnnotations(brokenLinks)
     core.setOutput('annotations', annotations)
-    core.setFailed(`${brokenLinks.length} broken links found!
+    core.debug(`${brokenLinks.length} broken links found!
 ---------
 ${annotations.map(x => `(${x.path}) - ${x.message}`).join('\n')}`)
+    return
   } catch (error) {
     core.setFailed(error.message)
   }

@@ -1,24 +1,24 @@
-name: "build-test"
+name: 'build-test'
 on: # rebuild any PRs and main branch changes
   pull_request:
   push:
     branches:
       - master
-      - "releases/*"
+      - 'releases/*'
 
 jobs:
   build: # make sure build/ci work properly
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: |
-          npm install
-          npm run all
-  test: # make sure the action works on a clean machine without building
+      - run: npm install
+      - name: Build and test
+        run: npm run all
+  dry_run: # make sure the action runs on a clean machine without building
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: ./
         with:
-          baseUrl: "https://hashicorp.com"
-          files: "pages/test.mdx"
+          baseUrl: 'https://hashicorp.com'
+          files: 'pages/test.mdx'
