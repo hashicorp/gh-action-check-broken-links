@@ -1,3 +1,4 @@
+import * as core from '@actions/core'
 import url from 'url'
 import fetch from 'node-fetch'
 import path from 'path'
@@ -125,7 +126,7 @@ export async function fetchStatusCode(
   retries = 5,
   retryDelay = 500
 ): Promise<number> {
-  console.log(`Fetching network status for url: "${href}"...`)
+  core.debug(`Fetching network status for url: "${href}"...`)
   try {
     const res = await fetch(href, { timeout: 1500 })
     const statusCode = await res.status
