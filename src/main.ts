@@ -15,7 +15,7 @@ async function run({ GITHUB_WORKSPACE }: ActionEnvironment): Promise<void> {
   try {
     const baseUrl: string = core.getInput('baseUrl', { required: true })
     const files: string[] = core
-      .getInput('files', { required: true })
+      .getInput('files')
       .split(' ')
       // Only support .mdx files at this time
       // TODO: Extend to provide support for more filetypes
@@ -39,10 +39,10 @@ async function run({ GITHUB_WORKSPACE }: ActionEnvironment): Promise<void> {
 
     const annotations = createAnnotations(brokenLinks)
     core.setOutput('annotations', annotations)
-    console.log(`${brokenLinks.length} broken links found!
+    core.setFailed(`${brokenLinks.length} broken links found!
 ---------
-${annotations.map(x => `(${x.path}) - ${x.message}`).join('\n')}`)
-    return
+
+${annotations.map(x => `Filename: ${x.path} :: ${x.message}`).join('\n')}`)
   } catch (error) {
     core.setFailed(error.message)
   }

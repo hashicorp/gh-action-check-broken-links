@@ -1,26 +1,31 @@
-name: 'CI'
+name: "C/I"
 
 on:
   pull_request:
   push:
     branches:
       - master
-      - 'releases/*'
+      - "releases/*"
 
 jobs:
   ci:
-    name: C/I
+    name: Build / Test / Run
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - run: npm install
+
       - name: Build / Test
         run: npm run all
-      - name: Action dry run
-        id: dry_run
+
+      - name: Run
+        id: action
+        continue-on-error: true
         uses: ./
         with:
-          baseUrl: 'https://hashicorp.com'
-          files: 'pages/test.mdx'
-      - name: Log annotations
-        run: echo ${{ toJson(steps.dry_run.outputs.annotations) }}
+          baseUrl: "https://hashicorp.com"
+          files: "pages/test.mdx"
+
+      - run: |
+          echo ${{ toJson(steps.action.outputs.annotations) }}

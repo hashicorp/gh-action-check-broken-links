@@ -1,6 +1,6 @@
 name: "HashiCorp's Link Checker"
-description: "Report broken links found in a given set of files"
-author: "Kevin Pruett"
+description: 'Report broken links found in a given set of files'
+author: 'Kevin Pruett'
 
 branding:
   icon: anchor
@@ -8,19 +8,19 @@ branding:
 
 inputs:
   baseUrl:
-    description: "The base URL that links will be resolved against"
+    description: 'The base URL that links will be resolved against'
     required: true
   files:
-    description: "A list of files that will be scanned for the presence of links"
-    required: true
+    description: 'A list of files that will be scanned for the presence of links'
+    required: false
   whitelist:
-    description: "A newline delmited list of URLs that will be ignored"
+    description: 'A newline delmited list of URLs that will be ignored'
     required: false
 
 outputs:
   annotations:
-    description: "Any broken links that were found from performing the initial check"
+    description: 'Any broken links that were found from performing the initial check'
 
 runs:
-  using: "node12"
-  main: "dist/index.js"
+  using: 'node12'
+  main: 'dist/index.js'

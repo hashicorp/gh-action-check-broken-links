@@ -12,10 +12,6 @@ import pkg from '../package.json'
 const { Response } = jest.requireActual('node-fetch')
 
 describe(`${pkg.name} -- Library`, () => {
-  beforeEach(() => {
-    // Silence logs meant for Node.js/CLI context
-    console.log = jest.fn()
-  })
   afterAll(() => jest.restoreAllMocks())
 
   describe('getLinkInfoFromFiles()', () => {

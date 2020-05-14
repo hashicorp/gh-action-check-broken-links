@@ -6599,7 +6599,7 @@ async function run({ GITHUB_WORKSPACE }) {
     try {
         const baseUrl = core.getInput('baseUrl', { required: true });
         const files = core
-            .getInput('files', { required: true })
+            .getInput('files')
             .split(' ')
             // Only support .mdx files at this time
             // TODO: Extend to provide support for more filetypes
@@ -6618,7 +6618,8 @@ async function run({ GITHUB_WORKSPACE }) {
         core.setOutput('annotations', annotations);
         core.setFailed(`${brokenLinks.length} broken links found!
 ---------
-${annotations.map(x => x.message).join('\n')}`);
+
+${annotations.map(x => `Filename: ${x.path} :: ${x.message}`).join('\n')}`);
     }
     catch (error) {
         core.setFailed(error.message);
@@ -17247,11 +17248,31 @@ function indices(value) {
 
 "use strict";
 
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createAnnotations = exports.fetchStatusCode = exports.resolveUrl = exports.collectBrokenLinks = exports.getLinkInfoFromFiles = void 0;
+const core = __importStar(__webpack_require__(470));
 const url_1 = __importDefault(__webpack_require__(835));
 const node_fetch_1 = __importDefault(__webpack_require__(454));
 const path_1 = __importDefault(__webpack_require__(622));
@@ -17329,7 +17350,7 @@ function resolveUrl(baseUrl, urlPath, href) {
 }
 exports.resolveUrl = resolveUrl;
 async function fetchStatusCode(href, retries = 5, retryDelay = 500) {
-    console.log(`Fetching network status for url: "${href}"...`);
+    core.debug(`Fetching network status for url: "${href}"...`);
     try {
         const res = await node_fetch_1.default(href, { timeout: 1500 });
         const statusCode = await res.status;
