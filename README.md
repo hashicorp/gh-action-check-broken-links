@@ -1,6 +1,6 @@
 # HashiCorp's Link Checker
 
-<a href="https://github.com/hashicorp/gh-action-check-broken-links"><img alt="typescript-action status" src="https://github.com/hashicorp/gh-action-check-broken-links/workflows/CI/badge.svg"></a>
+![C/I Status](https://github.com/hashicorp/gh-action-check-broken-links/workflows/C/I/badge.svg)
 
 A GitHub Action that reports all broken links found within a set of provided `.mdx` files
 
