@@ -11,10 +11,10 @@ A GitHub Action that reports all broken links found within a set of provided `.m
 
 Parses `.mdx` files, locating all links. Reports back any failed requests including those that contain a fragment identifier (i.e. https://example.com/page#identifier) but whose resulting markup does not.
 
-## Example
+## Example Usage
 
 ```yaml
-- name: Check for broken links
+- name: HashiCorp's Link Checker
   uses: hashicorp/gh-action-check-broken-links@v1
   with:
     baseUrl: 'https://hashicorp.com'
