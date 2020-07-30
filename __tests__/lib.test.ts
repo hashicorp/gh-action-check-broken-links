@@ -34,11 +34,11 @@ describe(`${pkg.name} -- Library`, () => {
       )
     })
 
-    it("should reject files outside the 'pages' or 'shared' directories", () => {
+    it("should reject files outside the 'pages' or 'content' directories", () => {
       const workspace = path.join(__dirname, 'fixtures/mixed')
       const files = [
         'invalid/terraform/foo.mdx',
-        'shared/vault/symlink.mdx',
+        'content/tutorials/vault/getting-started.mdx',
         'pages/terraform/install.mdx'
       ]
 
@@ -49,7 +49,7 @@ describe(`${pkg.name} -- Library`, () => {
       expect(actual).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            filename: 'shared/vault/symlink.mdx'
+            filename: 'content/tutorials/vault/getting-started.mdx'
           }),
           expect.objectContaining({
             filename: 'pages/terraform/install.mdx'
