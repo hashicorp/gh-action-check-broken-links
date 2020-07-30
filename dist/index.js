@@ -17324,7 +17324,7 @@ function getLinkInfoFromFiles(workspace, files) {
     return files
         .filter(filename => {
         return (filename.split('/').includes('pages') ||
-            filename.split('/').includes('shared'));
+            filename.split('/').includes('content'));
     })
         .map(filename => {
         const filepath = path_1.default.join(workspace, filename);
@@ -17345,11 +17345,11 @@ async function collectBrokenLinks(baseUrl, linkInfo, whitelist) {
             // under the `/pages` directory serve as their respective urls
             // eg: /pages/some-file.mdx is served at site.com/some-file
             //
-            // Additionally, we are handling files located in the `/shared`
+            // Additionally, we are handling files located in the `/content`
             // directory similarly in the learn project
             const urlPath = filename
                 .split('/')
-                .filter(segment => segment !== 'pages' && segment !== 'shared')
+                .filter(segment => segment !== 'pages' && segment !== 'content')
                 .join('/');
             const qualifiedHref = resolveUrl(baseUrl, urlPath, link.url);
             const res = whitelist.includes(qualifiedHref)
