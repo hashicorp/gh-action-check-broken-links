@@ -28,7 +28,7 @@
     "@hashicorp/nextjs-scripts": "^7.2.1",
     "rehype-parse": "^6.0.2",
     "remark-parse": "^8.0.3",
-    "unified": "^9.0.0",
+    "unified": "^9.1.0",
     "unist-util-find": "^1.0.1",
     "unist-util-visit": "^2.0.3"
   },
@@ -38,7 +38,7 @@
     "@types/hast-format": "^2.3.0",
     "@types/jest": "^24.9.1",
     "@types/mdast": "^3.0.3",
-    "@types/node": "^12.12.51",
+    "@types/node": "^12.12.53",
     "@types/node-fetch": "^2.5.7",
     "@types/unist": "^2.0.3",
     "@zeit/ncc": "^0.20.5",
