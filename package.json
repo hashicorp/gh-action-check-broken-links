@@ -24,7 +24,7 @@
   "author": "Kevin Pruett",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.4",
+    "@actions/core": "^1.2.6",
     "@hashicorp/nextjs-scripts": "^7.2.1",
     "rehype-parse": "^6.0.2",
     "remark-parse": "^8.0.3",
