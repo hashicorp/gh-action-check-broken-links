@@ -22,5 +22,5 @@ outputs:
     description: 'Any broken links that were found from performing the initial check'
 
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
