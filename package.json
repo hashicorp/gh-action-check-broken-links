@@ -43,7 +43,7 @@
     "@types/unist": "^2.0.3",
     "@zeit/ncc": "^0.20.5",
     "husky": "^4.2.5",
-    "jest": "^24.9.0",
+    "jest": "^29.7.0",
     "jest-circus": "^24.9.0",
     "ts-jest": "^24.2.0",
     "typescript": "^3.9.7"
