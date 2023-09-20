@@ -25,7 +25,7 @@
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.4",
-    "@hashicorp/nextjs-scripts": "^7.2.1",
+    "@hashicorp/nextjs-scripts": "^19.0.3",
     "rehype-parse": "^6.0.2",
     "remark-parse": "^8.0.3",
     "unified": "^9.1.0",
